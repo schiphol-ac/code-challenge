@@ -1,0 +1,30 @@
+header {
+    background-color: #eee;
+    padding: 30px;
+    text-align: center;
+}
+
+h1 {
+    color: #1a0034;
+    font-size: 64px;
+}
+
+main {
+    flex: 1;
+    margin: auto;
+    padding: 64px;
+    display: block;
+    max-width: 1280px;
+}
+
+nav {
+    flex: 1;
+    background: #ccc;
+    padding: 20px;
+}
+
+.search {
+    font-size: 18px;
+    width: 100%;
+    padding: 12px 20px;
+}

@@ -1,0 +1,164 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is an API for made for the code challenge. All the data is randomly generated",
+    "version": "1.0.0",
+    "title": "Flight Information"
+  },
+  "host": "95.217.57.184:3000",
+  "tags": [
+    {
+      "name": "arrivals"
+    },
+    {
+      "name": "departures"
+    },
+    {
+      "name": "gate changes",
+      "description": "Operations to fetch gate changes"
+    }
+  ],
+  "schemes": ["http"],
+  "paths": {
+    "/arrivals": {
+      "get": {
+        "tags": ["arrivals"],
+        "summary": "Get all arrival flights",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Arrival"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/departures": {
+      "get": {
+        "tags": ["departures"],
+        "summary": "Get all departure flights",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Departure"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gate-changes": {
+      "get": {
+        "tags": ["gate changes"],
+        "summary": "Get all gate changes",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GateChange"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gate-changes/{search}": {
+      "get": {
+        "tags": ["gate changes"],
+        "summary": "Search gate changes by flightNumber",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "path",
+            "description": "part of a flightNumber",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GateChange"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Arrival": {
+      "type": "object",
+      "properties": {
+        "flightNumber": {
+          "type": "string"
+        },
+        "gate": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "arrivalTime": {
+          "type": "string"
+        },
+        "passengers": {
+          "type": "integer"
+        }
+      }
+    },
+    "Departure": {
+      "type": "object",
+      "properties": {
+        "flightNumber": {
+          "type": "string"
+        },
+        "gate": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        },
+        "departureTime": {
+          "type": "string"
+        },
+        "passengers": {
+          "type": "integer"
+        }
+      }
+    },
+    "GateChange": {
+      "type": "object",
+      "properties": {
+        "currentGate": {
+          "type": "string"
+        },
+        "previousGate": {
+          "type": "string"
+        },
+        "flightNumber": {
+          "type": "string"
+        },
+        "direction": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
